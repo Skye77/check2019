@@ -1,0 +1,161 @@
+@charset "UTF-8";
+/************************公共 ************************/
+*{margin:0;padding:0}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+html,body { height: 100%; }
+body{background-color: #fff;font-weight:normal;font-family:"MicrosoftYaHei";}
+a,a:hover,a:active,a:link,a:visited {text-decoration: none;cursor: pointer;color: #fff;}
+fieldset, img { border: 0; }
+address, caption, cite, code, dfn, em, strong, th, var,*{font-style: normal;font-weight: normal;}
+ol, ul { list-style: none; }
+caption, th { text-align: left; }
+q:before, q:after { content: ''; }
+abbr, acronym { border: 0; }
+.fl{ float:left; }
+.fr{ float:right; }
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, .row {padding: 0;} 
+.clearfix:after {content: " ";display: block;clear: both;height: 0;}
+.clearfix {zoom: 1;}
+textarea {padding: 12px;text-indent: 12px;resize: none;}
+@font-face {font-family: 'iconfont';
+    src: url('font/iconfont.eot');                                     /* IE9*/
+    src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('font/iconfont.woff') format('woff'),                        /* chrome、firefox */
+    url('font/iconfont.ttf') format('truetype'),                    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('font/iconfont.svg#iconfont') format('svg');               /* iOS 4.1- */
+}
+button{ outline:none; }
+:focus{ outline: 0; }
+.form-group { margin-bottom: 12px; }
+.form-horizontal .form-group {margin-left:0;margin-right:0;}
+.row,.table{margin:0}
+.container-fluid { margin: 0px;  padding: 0px;}
+img { border: 0;}
+/* 谷歌浏览器input背景 */
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	background-image: none !important;
+   	-webkit-box-shadow: 0 0 0 10rem white inset !important;
+    background-color: rgb(255,255,255) !important;
+    color: rgb(255,255,255) !important;
+    -webkit-tap-highlight-color:rgb(255, 255,255) !important;
+}
+/************************共用************************/
+.hund{ height: 100%;}
+.hei60{ height: 100px;}
+.hei65{ height: 130px;}
+.che-cont{
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: #F8F9FB;
+}
+.che-info{
+	height: 68%;
+	width: 94%;
+	background-color: #fff;
+    margin: 11% auto 0;
+    box-shadow: 0px 1px 10px 1px rgba(47,120,225,0.3);
+	-moz-box-shadow: 0px 1px 10px 1px rgba(47,120,225,0.3);
+    -webkit-box-shadow: 0px 1px 10px 1px rgba(47,120,225,0.3);
+    -o-box-shadow: 0px 1px 10px 1px rgba(47,120,225,0.3);
+    -ms-box-shadow: 0px 1px 10px 1px rgba(47,120,225,0.3);
+}
+.che-logo-left{
+	width: 100%;
+	height: 100%;
+	background: url(../images/loginleft.png) no-repeat center;
+	background-size: cover;
+}
+.che-log-logo{
+	font-size: 13px;
+    color: #fff;
+    padding: 5px 0 0 25px;
+    display: block;
+}
+.chelogo {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background: url(../images/logo.png) no-repeat center;
+    background-size: contain;
+    position: relative;
+    top: 7px;
+    left: -10px;
+}
+.che-logo-right{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+.che-logo-form{
+	width: 54%;
+    margin: 0 auto;
+}
+.che-form-logo>a{
+	display: block;
+	height: 45px;
+	width: 45px;
+	margin: 0 auto 30px;
+	background: url(../images/loginlogo.png) no-repeat center;
+	background-size: cover;
+}
+.che-form-wj{ text-align: right;}
+.che-form-wj>a{
+	font-size: 12px;
+	color: #2F78E1;
+	line-height: 1;
+}
+.che-form-btn1>a{
+	background-color: #2F78E1;
+	border-color: #2F78E1;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 0;
+}
+.formStyle1 .layui-form-item{
+    margin: 0 0 20px;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid #C5D3DD;
+    font-size: 16px;
+    color: #656565;
+}
+.formStyle1 .layui-form-label{
+    width: 15%;
+    white-space: nowrap;
+    padding: 9px 0;
+}
+.formStyle1 .layui-input-block{
+	width: 85%;
+    margin-left: 15%;
+}
+.formStyle1 .layui-input-block .layui-input{
+	border-radius: 0;
+	background: none;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    padding-left: 15px;
+}
+.formStyle1 .layui-input-block .layui-input:hover{
+	border-radius: 0!important;
+	background: none!important;
+	border: none!important;
+}
+@media(max-width:1680px) {
+	.hei60{ height: 75px;}
+	.hei65{ height: 90px;}
+}
+@media(max-width:1366px) {
+	.hei60{ height: 60px;}
+	.hei65{ height: 65px;}
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>卫宁互联网审方系统</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="icon" type="image/x-icon" href="dist/images/logo.ico" />
+		<link rel="stylesheet" type="text/css" media="all" href="dist/layui-v2.4.5/css/layui.css" >
+		<link rel="stylesheet" type="text/css" media="all" href="dist/layuiadmin/style/admin.css"/>
+		<link rel="stylesheet" type="text/css" media="all" href="dist/css/common.css" />
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]--> 
+	</head>
+	<body class="bgf34">
+		<div class="che-cont">
+			<div class="layui-row">
+			    <div class="layui-col-md3">
+			      	<div class="che-head che-head-left">
+			      		<a href="javascript:;"><span class="fs16 fcff"><i class="chelogo"></i>卫宁互联网审方系统</span></a>
+			      	</div>
+			    </div>
+			    <div class="layui-col-md8">
+			      	<div class="che-head">
+			      		<ul class="clearfix che-tab" id="headtab" lay-filter="headtab" lay-allowclose="true"><li class="active" lay-id="1" lay-type="#waitcont1">待审核</li><li lay-id="2" lay-type="#notcont2">审核不通过</li><li lay-id="3" lay-type="#yescont3">审核通过</li></ul>
+			      	</div>
+			    </div>
+			    <div class="layui-col-md1">
+			      	<div class="che-head che-head-right"><a href="javascript:;" class="che-user"></a></div>
+			    </div>
+		  	</div>
+		  	<!--待审核-->
+		  	<div class="layui-row che-info" id="waitcont1">
+		  		<div class="layui-col-md4 hund">
+		  			<div class="che-body-left">
+		  				<div class="layui-row left-title clearfix"><p class="fl tyff1">待审核处方单</p><p class="fr tyff2">共<span class="fcblue" id="waitlen"></span>条待审核数据</p></div>
+		  				<div class="layui-row left-search clearfix">
+	  					 	<div class="layui-form-item che-form">
+	  					 		<div class="layui-inline wid28 mr6">
+							      	<div class="layui-input-inline">
+							      		<input type="hidden" id="wait_sel1_hide"/>
+							        	<input type="text" name="wait_sel1" id="wait_sel1" lay-verify="date" autocomplete="off" class="layui-input">
+							      		<label class="che-date-icon" for="wait_sel1"></label>
+							      	</div>
+							    </div>
+							    <div class="layui-inline wid54 mid">
+							      	<div class="layui-input-inline">
+							        	<input type="text" name="wait_hzxm" id="wait_hzxm" lay-verify="title" placeholder="请输入就诊信息/患者姓名" autocomplete="off" class="layui-input">
+							     	</div>
+							    </div>
+							    <button type="button" class="layui-btn layui-btn-primary che-btn-ty mlf1"><i class="che-sear-icon"></i></button>
+							    <button type="button" class="layui-btn layui-btn-primary che-btn-ty ml6"><i class="che-ref-icon"></i></button>
+							</div>
+		  				</div>
+		  				<div class="layui-row tableStyle1">
+		  					<table class="layui-table" id="wait_table" lay-filter="wait_id"></table>
+		  				</div>
+		  			</div>
+		  		</div>
+		  		<div class="layui-col-md8 hund">
+		  			<div class="che-body-right">
+		  				<div class="layui-row right-all">
+		  					<span class="che-result"></span>
+		  					<div class="layui-col-md7 che-cfd">
+		  						<div class="layui-row che-cfinfo">
+		  							<p class="layui-row che-cfp1">处方单</p>
+		  							<div class="layui-row">
+		  								<p class="layui-col-md4 che-cfp2"><font>姓名</font><span>张光</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>性别</font><span>男</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>年龄</font><span>22岁</span></p>
+		  							</div>
+		  							<div class="layui-row">
+		  								<p class="layui-col-md8 che-cfp2"><font>诊断</font><span>上呼吸道感染</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>日期</font><span>2018/08/08</span></p>
+		  							</div>
+		  							<p class="layui-row che-cfp4">Rp</p>
+		  						</div>
+		  						<div class="layui-row tableStyle2">
+		  							<div class="che-ov"><table class="layui-table" id="wait_table_cf" lay-filter="wait_id_cf"></table></div>
+		  						</div>
+		  						<div class="layui-row che-cfbtns clearfix" id="waitBtns">
+		  							<button type="button" class="layui-btn che-sty-btn ml15" data-method="checkTg" id="waitTg">审核通过</button>
+		  							<button type="button" class="layui-btn che-sty-btn che-sty-btn-orange" data-method="checkDh" id="waitDh">打回</button>
+		  							<p class="fr che-cfp5">当前处方合计：¥<span class="fcorg">19.9</span></p>
+		  						</div>
+		  					</div>
+		  					<div class="layui-col-md5 che-mzbl">
+		  						<div class="layui-row che-mz-info">
+		  							<p class="layui-row che-mzp1">门诊病历</p>
+		  							<ul class="layui-row che-mz-ul">
+		  								<li><p class="che-mzp2">【主诉】</p><p class="che-mzp3">头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。</p></li>
+		  								<li><p class="che-mzp2">【既往史】</p><p class="che-mzp3">高血压 糖尿病</p></li>
+		  								<li><p class="che-mzp2">【现病史】</p><p class="che-mzp3">无</p></li>
+		  							</ul>
+		  						</div>
+		  						<div class="layui-row che-his-info">
+		  							<p class="layui-row che-mzp1">历史处方列表</p>
+		  							<div class="layui-row tableStyle3">
+		  								<div class="che-ov"><table class="layui-table" id="wait_table_his" lay-filter="wait_id_his"></table></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+		  			</div>
+		  		</div>
+		  	</div>
+			<!--审核不通过-->
+			<div class="layui-row che-info" id="notcont2" style="display: none;">
+				<div class="layui-row not-body">
+					<div class="layui-row right-all not-cont">
+						<div class="layui-col-md9">
+							<div class="layui-row left-search clearfix">
+		  					 	<div class="layui-form-item che-form">
+		  					 		<div class="layui-inline che-item wid18">
+		  					 			<label class="layui-form-label">审核日期:</label>
+								      	<div class="layui-input-inline">
+								      		<input type="hidden" class="not_sel1_hide"/>
+								        	<input type="text" name="not_sel1" id="not_sel1" lay-verify="date" autocomplete="off" class="layui-input" readonly>
+								      		<label class="che-date-icon" for="not_sel1"></label>
+								      	</div>
+								    </div>
+								    <div class="layui-inline che-item fall">
+		  					 			<label class="layui-form-label">审核药师:</label>
+								      	<div class="layui-input-inline wid30">
+								      		<input type="hidden" class="not_sel2_hide"/>
+								        	<input type="text" name="not_sel2" id="not_sel2" autocomplete="off" class="layui-input" readonly>
+								      		<label class="che-icon layui-icon layui-icon-triangle-d" for="not_sel2"></label>
+								      	</div>
+								    </div>
+								    <div class="layui-inline wid25">
+								      	<div class="layui-input-inline">
+								        	<input type="text" name="not_sel3" id="not_sel3" lay-verify="title" placeholder="请输入就诊信息/患者姓名" autocomplete="off" class="layui-input">
+								     	</div>
+								    </div>
+								    <button type="button" class="layui-btn layui-btn-primary che-btn-ty mlf1"><i class="che-sear-icon"></i></button>
+								    <button type="button" class="layui-btn layui-btn-primary che-btn-ty ml6"><i class="che-ref-icon"></i></button>
+								</div>
+			  				</div>
+			  				<div class="layui-row tableStyle1 tableStyle1_1 page1">
+		  						<table class="layui-table" id="not_table" lay-filter="not_id"></table>
+		  						<script type="text/html" id="notset"><a class="set_btn1" lay-event="notCfinfo">处方信息</a></script>
+								<p class="tyff2 che-not-len">共<span class="fcblue" id="notlen"></span>条数据</p>
+		  					</div>
+						</div>
+						<div class="layui-col-md3">
+							<div class="layui-row che-not-ckxx">
+	  							<p class="layui-row che-mzp1-not">参考信息</p>
+	  							<ul class="layui-row che-mz-ul">
+	  								<li><p class="che-mzp2-not">2-8:注射剂配伍禁忌，应避免！</p><p class="che-mzp3-not">该药与 10%葡萄糖酸钙注射液 有相互作用。 来自说明书该药与 10%葡萄糖酸钙注射液 有相互作用。 来自说明书该药与 10%葡萄糖酸钙注射液 有相互作用。 来自说明书</p></li>
+	  								<li><p class="che-mzp2-not">2-8:注射剂配伍禁忌，应避免！</p><p class="che-mzp3-not">该药与 10%葡萄糖酸钙注射液 有相互作用。 来自说明书</p></li>
+	  								<li><p class="che-mzp2-not">2-8:注射剂配伍禁忌，应避免！</p><p class="che-mzp3-not">该药与 10%葡萄糖酸钙注射液 有相互作用。 来自说明书</p></li>
+	  								<li><p class="che-mzp2-not">2-8:注射剂配伍禁忌，应避免！</p><p class="che-mzp3-not">无</p></li>
+	  								<li><p class="che-mzp2-not">2-5:说明书提示：本品3月～18岁40公斤以下患者 静滴单次常规量为0.03克每公斤</p><p class="che-mzp3-not"></p></li>
+	  							</ul>
+	  						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--审核通过-->
+			<div class="layui-row che-info" id="yescont3" style="display: none;">
+		  		<div class="layui-col-md4 hund">
+		  			<div class="che-body-left">
+		  				<div class="layui-row left-title clearfix"><p class="fl tyff1">审核通过处方单</p><p class="fr tyff2">共<span class="fcblue" id="yeslen"></span>条待审核数据</p></div>
+		  				<div class="layui-row left-search clearfix">
+	  					 	<div class="layui-form-item che-form">
+	  					 		<div class="layui-inline wid28 mr6">
+							      	<div class="layui-input-inline">
+							      		<input type="hidden" id="yes_sel1_hide"/>
+							        	<input type="text" name="yes_sel1" id="yes_sel1" lay-verify="date" autocomplete="off" class="layui-input">
+							      		<label class="che-date-icon" for="yes_sel1"></label>
+							      	</div>
+							    </div>
+							    <div class="layui-inline wid54 mid">
+							      	<div class="layui-input-inline">
+							        	<input type="text" name="yes_sel2" id="yes_sel2" lay-verify="title" placeholder="请输入就诊信息/患者姓名" autocomplete="off" class="layui-input">
+							     	</div>
+							    </div>
+							    <button type="button" class="layui-btn layui-btn-primary che-btn-ty mlf1"><i class="che-sear-icon"></i></button>
+							    <button type="button" class="layui-btn layui-btn-primary che-btn-ty ml6"><i class="che-ref-icon"></i></button>
+							</div>
+		  				</div>
+		  				<div class="layui-row tableStyle1">
+		  					<table class="layui-table" id="yes_table" lay-filter="yes_id"></table>
+		  				</div>
+		  			</div>
+		  		</div>
+		  		<div class="layui-col-md8 hund">
+		  			<div class="che-body-right">
+		  				<div class="layui-row right-all">
+		  					<span class="che-result-yes"></span>
+		  					<div class="layui-col-md7 che-cfd">
+		  						<div class="layui-row che-cfinfo">
+		  							<p class="layui-row che-cfp1">处方单</p>
+		  							<div class="layui-row">
+		  								<p class="layui-col-md4 che-cfp2"><font>姓名</font><span>张光</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>性别</font><span>男</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>年龄</font><span>22岁</span></p>
+		  							</div>
+		  							<div class="layui-row">
+		  								<p class="layui-col-md8 che-cfp2"><font>诊断</font><span>上呼吸道感染</span></p>
+		  								<p class="layui-col-md4 che-cfp2"><font>日期</font><span>2018/08/08</span></p>
+		  							</div>
+		  							<p class="layui-row che-cfp4">Rp</p>
+		  						</div>
+		  						<div class="layui-row tableStyle2">
+		  							<div class="che-ov"><table class="layui-table" id="yes_table_cf" lay-filter="yes_id_cf"></table></div>
+		  						</div>
+		  						<div class="layui-row che-cfbtns clearfix">
+		  							<p class="fr che-cfp5">当前处方合计：¥<span class="fcorg">19.9</span></p>
+		  						</div>
+		  					</div>
+		  					<div class="layui-col-md5 che-mzbl">
+		  						<div class="layui-row che-mz-info">
+		  							<p class="layui-row che-mzp1">门诊病历</p>
+		  							<ul class="layui-row che-mz-ul che-mz-ul-yes">
+		  								<li><p class="che-mzp2">【主诉】</p><p class="che-mzp3">头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。</p></li>
+		  								<li><p class="che-mzp2">【既往史】</p><p class="che-mzp3">高血压 糖尿病</p></li>
+		  								<li><p class="che-mzp2">【现病史】</p><p class="che-mzp3">无</p></li>
+		  							</ul>
+		  						</div>
+		  					</div>
+		  				</div>
+		  			</div>
+		  		</div>
+		  	</div>
+		</div>
+		<!--打回-->
+		<div class="chemod2" id="commentCont" style="display: none;">
+			<form class="layui-form che-mod-form">
+				<div class="layui-form-item">
+    				<label class="che-mod-title">问题描述</label>
+				    <div><textarea class="layui-textarea"></textarea></div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-row che-mod-sear clearfix">
+	    				<label class="che-mod-title fl">点评结论</label>
+	    				<div class="layui-form-item che-form wid40 fr">
+						    <div class="layui-inline mid">
+						      	<div class="layui-input-inline">
+						        	<input type="text" name="wait_dp" id="wait_dp" lay-verify="title" placeholder="请输入搜索内容" autocomplete="off" class="layui-input">
+						     	</div>
+						    </div>
+						    <button type="button" class="layui-btn layui-btn-primary che-btn-ty mlf1" data-method="modSear" id="modSear"><i class="che-sear-icon"></i></button>
+						</div>
+					</div>
+				    <div class="che-mod-cont" id="comInputs">
+			    	 	<input type="checkbox" name="comment[11]" lay-skin="primary" title="1-1书写不规范" checked="checked">
+  						<input type="checkbox" name="comment[12]" lay-skin="primary" title="1-10临床测试测试测试处方超测试测试处方超测试测试">
+  						<input type="checkbox" name="comment[13]" lay-skin="primary" title="1-11处方超测试测试处方超测试测试">
+  					</div>
+				</div>
+			</form>
+		</div>
+		<!--处方信息-->
+		<div class="layui-row" id="notcfCont" style="display: none;">
+			<span class="che-result-not"></span>
+			<div class="layui-col-md7 che-cfd">
+				<div class="layui-row che-cfinfo">
+					<p class="layui-row che-cfp1">处方单</p>
+					<div class="layui-row">
+						<p class="layui-col-md4 che-cfp2"><font>姓名</font><span>张光</span></p>
+						<p class="layui-col-md4 che-cfp2"><font>性别</font><span>男</span></p>
+						<p class="layui-col-md4 che-cfp2"><font>年龄</font><span>22岁</span></p>
+					</div>
+					<div class="layui-row">
+						<p class="layui-col-md8 che-cfp2"><font>诊断</font><span>上呼吸道感染</span></p>
+						<p class="layui-col-md4 che-cfp2"><font>日期</font><span>2018/08/08</span></p>
+					</div>
+					<p class="layui-row che-cfp4">Rp</p>
+				</div>
+				<div class="layui-row tableStyle2">
+					<div class="che-ov"><table class="layui-table" id="not_table_cf" lay-filter="not_id_cf"></table></div>
+				</div>
+				<div class="layui-row clearfix">
+					<p class="che-cfp6 fl">当前处方合计：¥<span class="fcorg">19.9</span></p>
+				</div>
+			</div>
+			<div class="layui-col-md5 che-mzbl">
+				<div class="layui-row che-mz-info">
+					<p class="layui-row che-mzp1">门诊病历</p>
+					<ul class="layui-row che-mz-ul che-mz-ul-not">
+						<li><p class="che-mzp2">【主诉】</p><p class="che-mzp3">头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。头晕，咳嗽3天，无发热，咽痛等不适。</p></li>
+						<li><p class="che-mzp2">【既往史】</p><p class="che-mzp3">高血压 糖尿病</p></li>
+						<li><p class="che-mzp2">【现病史】</p><p class="che-mzp3">无</p></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="dist/layui-v2.4.5/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="dist/js/index.js" charset="utf-8"></script>
+	</body>
+</html>
